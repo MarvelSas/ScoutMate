@@ -1,0 +1,33 @@
+<div class="content">
+  <h1>Zeszyt rozkazów</h1>
+
+  <button class="btn" (click)="gotocreateorder()">Utwórz nowy rozkaz</button>
+
+  <hr/>
+
+  <div class="form-row">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Numer rozkazu</th>
+        <th>Data</th>
+        <th>Twórca</th>
+        <th>Pobieranie</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let organizationOrder of getOrganizationOrders();"[ngSwitch]="organizationOrder.order_type">
+        <td *ngSwitchCase="'NORMAL'">{{"L "+organizationOrder.numberOrder+"/"+convertDate(organizationOrder.date!).getFullYear()}}</td>
+        <td *ngSwitchCase="'SPECIAL'">{{"S "+organizationOrder.numberOrder+"/"+convertDate(organizationOrder.date!).getFullYear()}}</td>
+
+
+
+        <td>{{organizationOrder.date}}</td>
+        <td>{{organizationOrder.name +" "+organizationOrder.surname}}</td>
+        <td><button class="btn" (click)="openPDF(organizationOrder.id)">Otwórz PDF</button></td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

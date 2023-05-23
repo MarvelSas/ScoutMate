@@ -1,0 +1,8 @@
+clr-vertical-nav{
+  height: 100%;
+  background-color: hsl(48, 95%, 48%);
+}
+
+clr-vertical-nav a{
+  color: white;
+}

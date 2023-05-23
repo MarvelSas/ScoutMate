@@ -1,0 +1,52 @@
+<div class="content">
+  <h1>Zarządzaj swoim profilem</h1>
+  <div class="form" >
+    <h3>Dane harcerskie</h3>
+
+
+      <div class="form-row" >
+        <input type="text" placeholder="Ksywka/Nick" [(ngModel)]="appUserProfileDetails.nickName" name="ksywka"/>
+      </div>
+
+      <div class="form-row">
+        <select clrSelect
+                style="width: 100%;"
+                [(ngModel)]="currentScoutRank"
+                name="scoutRank"
+
+        >
+          <option *ngFor="let scoutRank1 of getScoutRanks()"
+                  [ngValue]="scoutRank1!"
+          >{{scoutRank1.name}}</option>
+
+        </select>
+      </div>
+
+      <div class="form-row">
+        <select clrSelect style="width: 100%;"
+                [(ngModel)]="currentScoutInstructorRank"
+                name="scoutInstructorRank"
+        >
+          <option [ngValue]="undefined">Brak</option>
+          <option *ngFor="let instructorRank of getScoutInstructorRanks();"
+                  [ngValue]="instructorRank" >{{instructorRank.name}}</option>
+
+        </select>
+      </div>
+
+
+      <div class="form-row">
+        <button class="btn btn-primary" (click)="changeUserDetails()">Zapisz</button>
+      </div>
+
+
+
+
+
+  </div>
+
+
+</div>
+
+
+

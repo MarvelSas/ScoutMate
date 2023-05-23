@@ -1,0 +1,373 @@
+<div class="content">
+  <h1>Stwórz rozkaz</h1>
+  <div class="form">
+    <form #form="ngForm"  >
+      <div class="form-inline">
+        <div class="subheader clr-align-items-center">
+          <span class="img-badge">
+              <img class="badge-img" alt="badge" src="assets/images/orderImage.png">
+          </span>
+          <span>Związek Harcerstwa Rzeczypospolitej</span>
+          <span>{{this.orderOrganization.name+" "+this.orderOrganization.organizationType}}</span>
+        </div>
+      </div>
+      <hr style="width: 80%;"/>
+
+      <div class="form-row">
+        <div class="subheader">
+          Typ Rozkazu
+        </div>
+        <div class="subtitle">
+
+        </div>
+        <clr-select-container>
+          <select
+            clrSelect
+            name="Typ rozkazu"
+            [(ngModel)]="newOrder.order_type"
+            clrSelect style="width: 100%;"
+            required
+            #order_type="ngModel">
+            <option value="0" >Normalny</option>
+            <option value="1">Specjalny</option>
+          </select>
+          <clr-control-error>To pole jest wymagane</clr-control-error>
+
+        </clr-select-container>
+
+      </div>
+
+
+
+      <div class="form-row-new">
+        <div class="subheader">
+          Miejsce
+        </div>
+        <clr-input-container>
+            <input clrInput class="inputNewClr"  type="text" size="100"
+
+                   placeholder="Miejsce (To pole jest wymagane)"
+                   name="Miejsce"
+                   [(ngModel)]="newOrder.place"
+                   required
+                   #place="ngModel"/>
+          <clr-control-error></clr-control-error>
+
+
+        </clr-input-container>
+
+      </div>
+
+
+
+
+
+
+      <hr style="width: 80%;"/>
+
+
+      <div class="form-row">
+        <div class="subheader">
+          Cytat
+        </div>
+
+        <div class="text-area-panel">
+          <clr-textarea-container>
+                        <textarea clrTextarea style="width: 100% !important; height: 140px !important; margin-top: 15px;"
+                                  name="Cytat"
+                                  [(ngModel)]="newOrder.quote"
+                                  required
+                                  #quote="ngModel">
+                        </textarea>
+            <clr-control-error>To pole jest wymagane</clr-control-error>
+            <clr-control-error></clr-control-error>
+          </clr-textarea-container>
+        </div>
+      </div>
+
+      <hr style="width: 80%;"/>
+      <div class="form-row">
+        <div class="subheader">
+          Wyjątki od rozkazów
+        </div>
+        <div class="subtitle">
+
+        </div>
+        <div class="text-area-panel">
+          <clr-textarea-container>
+                        <textarea
+                          clrTextarea style="width: 100% !important; height: 140px !important; margin-top: 15px;"
+                          name="Wyjątki"
+                          [(ngModel)]="newOrder.exceptions"
+                          #exceptions="ngModel"
+                        >
+                        </textarea>
+          </clr-textarea-container>
+        </div>
+      </div>
+      <hr style="width: 80%;"/>
+      <div class="form-row">
+        <div class="subheader">
+          Stopnie i sprawności/Komisja Instruktorska
+        </div>
+
+        <div class="subheaderSmall">
+          Wybierz akcje które chcesz zatrwierdzić i wpisać w rozkaz
+        </div>
+
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Imie Nazwisko aplikanta</th>
+            <th>Stopień/Sprawność</th>
+            <th>Akcja</th>
+          </tr>
+          </thead>
+          <tbody >
+          <tr *ngFor="let actionQueueLineGRANTING_MERITBADGE_AND_RANKS of getActionQueueLineGRANTING_MERITBADGE_AND_RANKS();" >
+            <td>{{actionQueueLineGRANTING_MERITBADGE_AND_RANKS.appUserDetailsDTO?.name+" "+
+            actionQueueLineGRANTING_MERITBADGE_AND_RANKS.appUserDetailsDTO?.surname}}</td>
+            <td *ngIf="actionQueueLineGRANTING_MERITBADGE_AND_RANKS.meritBadge!=undefined">{{actionQueueLineGRANTING_MERITBADGE_AND_RANKS.meritBadge?.name}}</td>
+            <td *ngIf="actionQueueLineGRANTING_MERITBADGE_AND_RANKS.scoutInstructorRank!=undefined">{{actionQueueLineGRANTING_MERITBADGE_AND_RANKS.scoutInstructorRank?.name}}</td>
+            <td *ngIf="actionQueueLineGRANTING_MERITBADGE_AND_RANKS.scoutRank!=undefined">{{actionQueueLineGRANTING_MERITBADGE_AND_RANKS.scoutRank?.name}}</td>
+            <td >
+              <button type="button" class="btn-List btn-primary" aria-label="done" (click)="addToFinalOrderQueueLinesGRANTING_MERITBADGE_AND_RANKS(actionQueueLineGRANTING_MERITBADGE_AND_RANKS.id)">
+                <cds-icon shape="plus-circle"></cds-icon>
+              </button>
+            </td>
+
+
+          </tr>
+          </tbody>
+        </table>
+
+        <button class="btn" (click)="resetFinalOrderQueueLinesGRANTING_MERITBADGE_AND_RANKS()">Resetuj</button>
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Imie Nazwisko</th>
+            <th>Stopień/Sprawność</th>
+            <th>Akcja</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let finalGRANTING_MERITBADGE_AND_RANKS of getFinalOrderQueueLinesGRANTING_MERITBADGE_AND_RANKS();">
+
+            <td>{{finalGRANTING_MERITBADGE_AND_RANKS.appUserDetailsDTO?.name+" "+
+            finalGRANTING_MERITBADGE_AND_RANKS.appUserDetailsDTO?.surname}}</td>
+            <td *ngIf="finalGRANTING_MERITBADGE_AND_RANKS.meritBadge!=undefined">{{finalGRANTING_MERITBADGE_AND_RANKS.meritBadge?.name}}</td>
+            <td *ngIf="finalGRANTING_MERITBADGE_AND_RANKS.scoutInstructorRank!=undefined">{{finalGRANTING_MERITBADGE_AND_RANKS.scoutInstructorRank?.name}}</td>
+            <td *ngIf="finalGRANTING_MERITBADGE_AND_RANKS.scoutRank!=undefined">{{finalGRANTING_MERITBADGE_AND_RANKS.scoutRank?.name}}</td>
+            <td >
+              <button type="button" class="btn-List" aria-label="done" (click)="removeFromFinalOrderQueueLinesGRANTING_MERITBADGE_AND_RANKS(finalGRANTING_MERITBADGE_AND_RANKS.id)">
+                <cds-icon shape="x"></cds-icon>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="subtitle">
+          Text dodatkowy
+        </div>
+
+        <div class="text-area-panel">
+          <clr-textarea-container>
+                        <textarea clrTextarea style="width: 100% !important; height: 140px !important; margin-top: 15px;"
+                                  name="TextDodatkowyStopniOrazSprawnosci"
+                                  [(ngModel)]="newOrder.customTextScoutRankAndMeritBadge"
+                                  #others="ngModel">
+                        >
+                        </textarea>
+          </clr-textarea-container>
+        </div>
+      </div>
+      <hr style="width: 80%;"/>
+      <div class="form-row">
+        <div class="subheader">
+          Jednostki
+        </div>
+
+        <div class="subheaderSmall">
+          Wybierz akcje które chcesz zatrwierdzić i wpisać w rozkaz
+        </div>
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Organizacja</th>
+            <th>Akcja</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let actionQueueLineCREATE_ORGANIZATION of getActionQueueLineCREATE_ORGANIZATION();">
+            <td>{{actionQueueLineCREATE_ORGANIZATION.subOrganization?.organizationType+" "+actionQueueLineCREATE_ORGANIZATION.subOrganization?.name}}</td>
+            <td>
+              <button type="button" class="btn-List" aria-label="done" (click)="addToFinalOrderQueueLinesCREATE_ORGANIZATION(actionQueueLineCREATE_ORGANIZATION.id)">
+                <cds-icon shape="plus-circle"></cds-icon>
+              </button>
+            </td>
+
+          </tr>
+          </tbody>
+        </table>
+
+        <button class="btn" (click)="resetFinalOrderQueueLinesCREATE_ORGANIZATION()" >Resetuj</button>
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Organizacja</th>
+            <th>Akcja</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let finalCREATE_ORGANIZATION of getFinalOrderQueueLinesCREATE_ORGANIZATION();">
+            <td>{{finalCREATE_ORGANIZATION.organization?.organizationType+" "+finalCREATE_ORGANIZATION.organization?.name}}</td>
+            <td >
+              <button type="button" class="btn-List" aria-label="done" (click)="removeFromFinalOrderQueueLinesCREATE_ORGANIZATION(finalCREATE_ORGANIZATION.id)">
+                <cds-icon shape="x"></cds-icon>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="subtitle">
+          Text dodatkowy
+        </div>
+
+        <div class="text-area-panel">
+          <clr-textarea-container>
+                        <textarea clrTextarea style="width: 100% !important; height: 140px !important; margin-top: 15px;"
+                                  name="TextDodatkowyJednostki"
+                                  [(ngModel)]="newOrder.customTextOrganization"
+                                  #others="ngModel">
+                        >
+                        </textarea>
+          </clr-textarea-container>
+        </div>
+      </div>
+
+      <hr style="width: 80%;"/>
+
+      <div class="form-row">
+        <div class="subheader">
+          Mianowania i zwolnienia
+        </div>
+        <div class="subheaderSmall">
+          Wybierz akcje które chcesz zatrwierdzić i wpisać w rozkaz
+        </div>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Imie Nazwisko</th>
+            <th>Funkcja</th>
+            <th>Mianowanie/Zwolnienie</th>
+            <th>Akcje</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let actionQueueLineGrantingAndRevoking_FUNCTION of getActionQueueLineGrantingAndRevoking_FUNCTION();">
+            <td>{{actionQueueLineGrantingAndRevoking_FUNCTION.appUserDetailsDTO?.name+" "+actionQueueLineGrantingAndRevoking_FUNCTION.appUserDetailsDTO?.surname}}</td>
+            <td>{{actionQueueLineGrantingAndRevoking_FUNCTION.role?.name}}</td>
+            <td *ngIf="actionQueueLineGrantingAndRevoking_FUNCTION.action_type=='GRANTING_FUNCTION'">Mianowanie</td>
+            <td *ngIf="actionQueueLineGrantingAndRevoking_FUNCTION.action_type=='REVOKING_FUNCTION'">Zwolnienie</td>
+            <td>
+              <button type="button" class="btn-List" aria-label="done" (click)="addToFinalOrderQueueLinesGrantingAndRevoking_FUNCTION(actionQueueLineGrantingAndRevoking_FUNCTION.id)">
+                <cds-icon shape="plus-circle"></cds-icon>
+              </button>
+            </td>
+
+          </tr>
+          </tbody>
+        </table>
+
+        <button class="btn" (click)="resetFinalOrderQueueLinesGrantingAndRevoking_FUNCTION()" >Resetuj</button>
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Imie Nazwisko</th>
+            <th>Funkcja</th>
+            <th>Mianowanie/Zwolnienie</th>
+            <th>Akcje</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let finalGrantingAndRevoking_FUNCTION of getFinalOrderQueueLinesGrantingAndRevoking_FUNCTION();">
+            <td>{{finalGrantingAndRevoking_FUNCTION.appUserDetailsDTO?.name+" "+finalGrantingAndRevoking_FUNCTION.appUserDetailsDTO?.surname}}</td>
+            <td>{{finalGrantingAndRevoking_FUNCTION.role?.name}}</td>
+            <td *ngIf="finalGrantingAndRevoking_FUNCTION.action_type=='GRANTING_FUNCTION'">Mianowanie</td>
+            <td *ngIf="finalGrantingAndRevoking_FUNCTION.action_type=='REVOKING_FUNCTION'">Zwolnienie</td>
+            <td>
+              <button type="button" class="btn-List" aria-label="done" (click)="removeFromFinalOrderQueueLinesGrantingAndRevoking_FUNCTION(finalGrantingAndRevoking_FUNCTION.id)">
+                <cds-icon shape="x"></cds-icon>
+              </button>
+            </td>
+
+          </tr>
+          </tbody>
+        </table>
+
+
+        <div class="subtitle">
+          Text dodatkowy
+        </div>
+
+        <div class="text-area-panel">
+          <clr-textarea-container>
+                        <textarea clrTextarea style="width: 100% !important; height: 140px !important; margin-top: 15px;"
+                                  name="TextDodatkowyMianowaniaIZwolnienia"
+                                  [(ngModel)]="newOrder.customTextRole"
+                                  #others="ngModel">
+                        >
+                        </textarea>
+          </clr-textarea-container>
+        </div>
+
+        <div class="subheader" style="margin-top:15px;">
+          Pochwały i nagany, inne
+        </div>
+
+
+
+
+        <div class="text-area-panel">
+          <clr-textarea-container>
+                        <textarea clrTextarea style="width: 100% !important; height: 140px !important; margin-top: 15px;"
+                                  name="Inne"
+                                  [(ngModel)]="newOrder.others"
+                                  #others="ngModel">
+                        </textarea>
+          </clr-textarea-container>
+        </div>
+      </div>
+      <hr style="width: 80%;"/>
+
+      <div class="form-row">
+        <button class="btn order" (click)="viewOrder(form)">Zobacz podgląd rozkazu pdf</button>
+          <button class="btn-New" (click)="createOrderFirstStep(form)"> Utwórz Rozkaz</button>
+      </div>
+      <clr-modal [(clrModalOpen)]="showConfirmationFormModal">
+        <h3 class="modal-title">Potwierdz tworznie rozkazu</h3>
+        <div class="modal-body">Po potwierdzeniu rozkazu nie będzie możliwości zmiany jego danych</div>
+        <div class="modal-footer">
+          <button type="button" class="btn" (click)="showConfirmationFormModal = false">Anuluj</button>
+          <button type="button" class="btn" (click)="showConfirmationFormModal = false;creteOrderSecondStep(form)">Potwierdz</button>
+        </div>
+      </clr-modal>
+      <clr-modal [(clrModalOpen)]="showErrorValidationModal">
+        <h3 class="modal-title">Błąd</h3>
+        <div class="modal-body">Nie wszystkie dane w formularzu zostały wypełnione</div>
+        <div class="modal-footer">
+          <button type="button" class="btn" (click)="showErrorValidationModal = false">Zamknij</button>
+        </div>
+      </clr-modal>
+    </form>
+  </div>
+</div>
+
+

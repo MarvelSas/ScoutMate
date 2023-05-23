@@ -1,0 +1,83 @@
+<div class="content">
+  <h1>Stwórz organizację</h1>
+  <div class="form">
+    <h3>Nazwa jednostki</h3>
+    <form>
+      <div class="form-row">
+        <input
+          type="text"
+          placeholder="Nazwa"
+          [(ngModel)]="newOrganizationName"
+          name="Nazwa organizacji"/>
+      </div>
+      <div  class="form-row">
+        <img *ngIf="!url"  alt="user" src="assets/images/info.svg">
+        <img *ngIf="url" style="max-height: 200px; max-width: 200px;"  alt="user"
+             [attr.src]="url"/>
+      </div>
+      <div class="form-row">
+        <button type="button" class="btn"  (click)="fileInput.click()">
+          Wybierz zdjęcie
+          <cds-icon shape="img"></cds-icon>
+        </button>
+        <input
+          #fileInput
+          hidden
+          type="file"
+          placeholder="Upload file"
+          required
+          (change)="changePhoto($event)"
+        >
+        <label>{{fileInput.value}}</label>
+      </div>
+
+
+      <div class="alert alert-danger" *ngIf="message">
+        <div class="alert-items">
+          <div class="alert-item static" role="alert">
+            <div class="alert-icon-wrapper">
+              <cds-icon class="alert-icon" shape="exclamation-circle"></cds-icon>
+            </div>
+            <span class="alert-text">
+                {{message}}
+            </span>
+          </div>
+        </div>>
+      </div>
+
+
+      <div class="form-row">
+
+      <h3>Wybierz zarządce jednostki</h3>
+        <h4 *ngIf="appUserDetails">{{appUserDetails.name+" "+appUserDetails.surname}}</h4>
+
+        <clr-datagrid [(clrDgSingleSelected)]="appUserDetails" >
+          <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+          <clr-dg-column [clrDgField]="'surname'">Surname</clr-dg-column>
+          <clr-dg-column>Email</clr-dg-column>
+
+          <clr-dg-row *clrDgItems="let user of getAppAllAppUsers()" [clrDgItem]="user">
+            <clr-dg-cell>{{user.name}}</clr-dg-cell>
+            <clr-dg-cell>{{user.surname}}</clr-dg-cell>
+            <clr-dg-cell>{{user.email}}</clr-dg-cell>
+
+          </clr-dg-row>
+
+          <clr-dg-footer></clr-dg-footer>
+        </clr-datagrid>
+      </div>
+      <div class="form-row">
+        <button class="btn btn-primary" (click)="submitCreatingOrganization()">Zapisz</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<clr-modal [(clrModalOpen)]="showErrorValidationModal">
+  <h3 class="modal-title">Błąd</h3>
+  <div class="modal-body"><p *ngFor="let error of getErrorList()">{{error}}</p></div>
+  <div class="modal-footer">
+    <button type="button" class="btn" (click)="showErrorValidationModal = false">Zamknij</button>
+  </div>
+</clr-modal>

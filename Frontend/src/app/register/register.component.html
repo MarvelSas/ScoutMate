@@ -1,0 +1,88 @@
+<!-- <div class="register_div">
+  <h1>Rejestracja</h1>
+<form name="register" (ngSubmit)="register()" #f="ngForm" class="register">
+  <div>
+    <label for="email">Email</label>
+    <input #email="ngModel" [(ngModel)]="model.email" name="email" required type="email" placeholder="Email"/>
+  </div>
+  <div>
+    <label for="confirm_email">Re-Email</label>
+    <input name="confirm_email" required type="email"/>
+  </div>
+  <div>
+    <label for="name">Imie</label>
+    <input #name="ngModel" [(ngModel)]="model.name" name="name" required/>
+  </div>
+  <div>
+    <label for="surname">Nazwisko</label>
+    <input #surname="ngModel" [(ngModel)]="model.surname" name="surname" required/>
+  </div>
+  <div>
+    <label for="birthday">Data urodzenia</label>
+    <input #birthday="ngModel" [(ngModel)]="model.birthday" name="birthday" type="date" required/>
+  </div>
+  <div>
+    <label for="password">Haslo</label>
+    <input #password="ngModel" [(ngModel)]="model.password" name="password" required type="password"/>
+  </div>
+  <div>
+    <label for="confirm_password">Re-haslo</label>
+    <input name="confirm_password" required type="password"/>
+  </div>
+  <div>
+    <input type="checkbox">Zgoda na RODO
+  </div>
+  <div>
+    <button>Zrejestruj sie</button>
+  </div>
+</form>
+
+<div>
+  <h2>Masz Konto?</h2>
+  <a href="/login"><button>Zaloguj</button></a>
+</div>
+</div> -->
+
+<body>
+<div id="register-form-wrap">
+  <h2>Rejestracja</h2>
+  <form id="register-form" (ngSubmit)="register()" #f="ngForm" class="register">
+    <p>
+      <input type="text" id="name" name="name" placeholder="Imie" required #name="ngModel" [(ngModel)]="model.name">
+    </p>
+    <p>
+      <input type="text" id="surname" name="surname" placeholder="Nazwisko" required #surname="ngModel" [(ngModel)]="model.surname">
+    </p>
+    <p>
+      <input type="email" id="email" name="email" placeholder="Email" required #email="ngModel" ngModel email [(ngModel)]="model.email">
+    </p>
+    <p>
+      <input type="email" id="email_repeat" name="email_repeat" placeholder="Powtórz Email" required>
+    </p>
+    <p>
+      <input type="date" id="birthday" name="birthday" placeholder="Data urodzenia" required #birthday="ngModel" [(ngModel)]="model.birthday">
+    </p>
+    <p>
+      <input type="text" id="nickname" name="nickname" placeholder="Ksywka/Nick" required #nickname="ngModel" [(ngModel)]="model.nickname">
+    </p>
+    <p>
+      <input type="password" id="password" name="password" placeholder="Hasło" required #password="ngModel" [(ngModel)]="model.password">
+    </p>
+    <p>
+      <input type="password" id="password_repeat" name="password_repeat" placeholder="Powtórz Hasło" required>
+    </p>
+    <p>
+      <input type="submit" id="register" value="Zarejestruj">
+    </p>
+  </form>
+  <hr>
+  <div id="register" class="register">
+    <h3>Masz konto?</h3>
+    <p>
+      <button onclick="window.location.href='/login'">Zaloguj się</button>
+    </p>
+  </div>
+</div>
+</body>
+
+

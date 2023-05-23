@@ -1,0 +1,90 @@
+<div class="content">
+  <h1>Zarządzaj swoim profilem</h1>
+<!--  #form="ngForm"-->
+  <div class="form" *ngIf="userDetails" >
+    <h3>Dane konta</h3>
+    <form #form="ngForm">
+
+      <div class="form-row">
+        <input name="email" #email="ngModel" [(ngModel)]="this.userDetails.data.userProfilDetails.email" type="text" disabled placeholder="Email"/>
+      </div>
+
+      <div class="form-row">
+<!--        <input  type="text" placeholder="{{userDetails.data.userProfilDetails.surname}}"/>-->
+        <input  name="imie" required #name="ngModel" [(ngModel)]="this.userDetails.data.userProfilDetails.name" type="text" placeholder="Imie"/>
+      </div>
+
+      <div class="form-row">
+        <input name="nazwisko" required #surname="ngModel" [(ngModel)]="this.userDetails.data.userProfilDetails.surname" type="text" placeholder="Nazwisko"/>
+      </div>
+
+      <div class="form-row">
+<!--        <clr-date-container>-->
+<!--          <label>Basic Demo</label>-->
+<!--          <input type="date" autocomplete="off" clrDate name="demo" [(ngModel)]="demo" />-->
+<!--        </clr-date-container>-->
+        <input type="date" disabled name="demo" [(ngModel)]="this.userDetails.data.userProfilDetails.birthday" />
+      </div>
+
+      <div class="form-row">
+        <input type="text" name="nickName" [(ngModel)]="this.userDetails.data.userProfilDetails.nickName" placeholder="Ksywka/Miano Puszczańskie"/>
+      </div>
+
+      <div class="form-row">
+        <button class="btn btn-primary" (click)="changeUserProfileData()" >Zapisz</button>
+      </div>
+
+
+      <hr style="..."/>
+
+      <div class="form-row">
+        <h3>Ustawienia zdjęcia profilowego</h3>
+
+        </div>
+
+        <div class="form-row">
+        <img [attr.src]="(preview==''?'http://localhost:8080/images/appUserPhoto/user.svg':preview) | secure | async" />
+      </div>
+
+      <div class="form-row">
+        <input type="file" accept="image/*" (change)="selectFile($event)" />
+      </div>
+
+      <div class="form-row">
+        <button class="btn btn-primary" (click)="uploadPhoto()"       [disabled]="!selectedFiles">
+          Aktualizuj zdjęcie</button>
+      </div>
+
+    </form>
+
+    <clr-modal [(clrModalOpen)]="isModalPhotoVisible">
+      <div class="modal-body">
+        <clr-alert [clrAlertType]="'success'">
+          <clr-alert-item>
+        <span class="alert-text">
+            Poprawnie zaktualizowano zdjęcie profilowe.
+        </span>
+          </clr-alert-item>
+        </clr-alert>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" (click)="isModalPhotoVisible = false">okey </button>
+      </div>
+    </clr-modal>
+  </div>
+  <clr-modal [(clrModalOpen)]="isModalVisible">
+    <div class="modal-body">
+      <clr-alert [clrAlertType]="'success'">
+        <clr-alert-item>
+        <span class="alert-text">
+            Poprawnie zaktualizowano dane użytkownika.
+        </span>
+        </clr-alert-item>
+      </clr-alert>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn" (click)="isModalVisible = false">okey </button>
+    </div>
+  </clr-modal>
+
+</div>

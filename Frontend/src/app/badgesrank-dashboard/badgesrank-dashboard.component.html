@@ -1,0 +1,26 @@
+<div class="content">
+  <h1>Stopnie i sprawności - wybór typu</h1>
+
+  <h2>Wybierz, komu chcesz otworzyć próbę danego typu</h2>
+
+  <div class="form-row">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Imie Nazwisko</th>
+        <th>Próba na sprawność</th>
+        <th>Próba na stopień</th>
+        <th>Próba na stopień instruktorski</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of getAllOrganizationUsers();" >
+        <td>{{user.name+" "+user.surname}}</td>
+        <td><button class="btn"(click)="gotocreateMeritbadgeattempt(user.email)">Próba na sprawność</button></td>
+        <td><button class="btn" [disabled]="checkIfYouCanStartScoutRankAttempt(user)"   (click)="gotoCreateScoutAtempt(user.email)">Próba na stopień</button></td>
+        <td><button class="btn" [disabled]="checkIfYouCanStartScoutRankInstructorAttempt(user)" (click)="gotoCreateinsturctorattempt(user.email)">Próba na stopień instruktorski</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

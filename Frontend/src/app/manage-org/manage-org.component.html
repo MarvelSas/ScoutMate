@@ -1,0 +1,155 @@
+<div class="content">
+  <h1>Zarządzaj swoimi jednostkami</h1>
+
+  <div class="clr-row">
+    <div class="clr-col-5">
+      <br>
+      <span class="column-header">Wybierz zarządzaną jednostkę</span>
+      <select clrSelect style="width: 100%;"
+              [(ngModel)]="currentOrganization"
+              (change)="onChangeOrganization()"
+              name="Wybrana organizacja">
+        <option
+          *ngFor="let ownedOrganization of getOrganizationOwned();"
+          [ngValue]="ownedOrganization">
+          {{getFullOrganizationName(ownedOrganization)}}</option>
+      </select>
+
+    </div>
+    <div class="clr-col-7">
+  <div class="cards-container">
+    <div class="card" (click)="gotoeditorg()">
+      <div class="card-img">
+        <img src="../../assets/images/interfaceImages/kajak.jpg" alt="img">
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          Edytuj organizacje
+        </p>
+      </div>
+    </div>
+    <div class="card" (click)="gotomanagesuborg()">
+      <div class="card-img">
+        <img src="assets/images/interfaceImages/boy-orgnazation.jpg" alt="img">
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          Organizacje Podległe
+        </p>
+      </div>
+    </div>
+    <div class="card" (click)="gotocreateorg()">
+      <div class="card-img">
+        <img src="assets/images/interfaceImages/open.jpg" alt="img">
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          Dodaj Nową jednostkę podległą
+        </p>
+      </div>
+    </div>
+    <div class="card" (click)="gotomanageorgmembers()">
+      <div class="card-img">
+        <img src="assets/images/interfaceImages/map_and_people.jpg" alt="img">
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          Zarządzaj członkami jednostki
+        </p>
+      </div>
+    </div>
+    <div class="card" (click)="gotoorderdashboard()">
+      <div class="card-img">
+        <img src="assets/images/interfaceImages/order_1.jpg" alt="img">
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          Rozkazy
+        </p>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+
+
+
+
+  <hr/>
+
+  <h2>{{getFullOrganizationName(currentOrganization)}}</h2>
+  <div class="clr-row">
+
+    <div class="clr-col-4">
+    <div class="user-profile">
+
+      <div class="user-image-container">
+        <img class="org-big-img" alt="user"
+             [attr.src]="'http://localhost:8080/images/organizationPhoto/'+(currentOrganization.image===null?'alert-circle.svg':currentOrganization.image) | secure | async"/>
+
+      </div>
+    </div>
+    </div>
+    <div class="clr-col-8">
+
+      <span class="column-header">Jednostki należące do organizacji</span>
+
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Logo</th>
+          <th>Jednostka</th>
+          <th>Typ jednostki</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let subOrganization of getCurrentSubOrganization();"
+                     >
+          <td>
+            <img class="org-img" alt="user"
+                    [attr.src]="'http://localhost:8080/images/organizationPhoto/'+(subOrganization.image===null?'alert-circle.svg':subOrganization.image) | secure | async"
+          ></td>
+          <td>{{subOrganization.name}}</td>
+          <td>{{subOrganization.organizationType}}</td>
+        </tr>
+
+        </tbody>
+      </table>
+      <br>
+      <span class="column-header">Harcerze należący do organizacji</span>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Imie i Nazwisko</th>
+          <th>Stopień Harcerski</th>
+          <th>Adres email</th>
+          <th>Funkcja</th>
+          <th>Miano</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let userOrganization of getCurrentOrganizationUsers();">
+          <td>{{userOrganization.name+" "+userOrganization.surname}}</td>
+          <td>{{userOrganization.scoutRankName}}</td>
+          <td>{{userOrganization.email}}</td>
+          <td>{{userOrganization.organizationFunction}}</td>
+          <td>{{userOrganization.nickName}}</td>
+        </tr>
+
+        </tbody>
+      </table>
+
+
+    </div>
+
+  </div>
+
+</div>
+<clr-modal [(clrModalOpen)]="showErrorValidationModal">
+  <h3 class="modal-title">Błąd</h3>
+  <div class="modal-body">Nie masz obecnie Organizacji Podległych</div>
+  <div class="modal-footer">
+    <button type="button" class="btn" (click)="showErrorValidationModal = false">Zamknij</button>
+  </div>
+</clr-modal>

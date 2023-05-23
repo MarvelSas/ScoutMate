@@ -1,0 +1,64 @@
+<div class="content">
+  <h1>Stopnie i sprawności</h1>
+
+
+    <div >
+      <form >
+          <select clrSelect
+                  class="selectNew"
+                  [(ngModel)]="chosenOrganization"
+                  (change)="onChange()"
+                  name="Wybrana organizacja"
+
+          >
+            <option *ngFor="let organizationInnerForLoop of getAllOrganizations();"
+                    [ngValue]="organizationInnerForLoop">
+              {{organizationInnerForLoop.name +" "+ organizationInnerForLoop.organizationType}}
+            </option>
+          </select>
+
+      </form>
+    </div>
+      <button class="btn" (click)="gotoBadgesRankDashBoard()">Stwórz próbę</button>
+
+
+
+
+
+  <hr/>
+
+  <h2>Próby, których jesteś opiekunem</h2>
+
+  <div class="form-row">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Nazwa Próby</th>
+        <th>Typ</th>
+        <th>Imie Nazwisko</th>
+        <th>Zakończ Próbę</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let userAttempt of userCreatedAttemptForOrganization();" [ngSwitch]="userAttempt.TYPE">
+        <td>{{userAttempt.name}}</td>
+        <td class="td20" *ngSwitchCase="'SCOUT_RANK'">Stopień harcerski</td>
+        <td class="td20"  *ngSwitchCase="'SCOUT_INSTRUCTOR_RANK'">Stopień instruktorski</td>
+        <td class="td20" *ngSwitchCase="'MERITBADGE'">Sprawność</td>
+        <td>{{userAttempt?.applicantId?.name +" "+ userAttempt?.applicantId?.surname}}</td>
+        <td class="td35">
+          <div class=" ">
+
+                <button class="btn" (click)="closeAttempt(userAttempt.id!,true)">Zakończ pozytywnie</button>
+               <button class="btn" (click)="closeAttempt(userAttempt.id!,false)">Zakończ negatywnie</button>
+
+
+          </div>
+
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

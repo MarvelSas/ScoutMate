@@ -1,0 +1,86 @@
+<clr-vertical-nav *ngIf="checkIfUserIsLogIn()" [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed">
+<!--  <a clrVerticalNavLink routerLink="login" routerLinkActive="active" *ngIf="!checkIfUserIsLogIn()">-->
+<!--    <cds-icon clrVerticalNavIcon shape="login"></cds-icon>-->
+<!--    Zaloguj się-->
+<!--  </a>-->
+<!--  <a clrVerticalNavLink routerLink="register" routerLinkActive="active" *ngIf="!checkIfUserIsLogIn()">-->
+<!--    <cds-icon clrVerticalNavIcon shape="plus"></cds-icon>-->
+<!--    Zarejestruj się-->
+<!--  </a>-->
+  <a clrVerticalNavLink routerLink="home" routerLinkActive="active">
+    <cds-icon clrVerticalNavIcon shape="tasks"></cds-icon>
+    Zadania
+  </a>
+  <a clrVerticalNavLink routerLink="userprofile" routerLinkActive="active">
+    <cds-icon clrVerticalNavIcon shape="user"></cds-icon>
+    Twój profil
+  </a>
+  <a clrVerticalNavLink routerLink="manageprofile" routerLinkActive="active">
+    <cds-icon clrVerticalNavIcon shape="cog"></cds-icon>
+    Zarządzanie profilem użytkownika
+  </a>
+<!--  <a clrVerticalNavLink routerLink="managescoutprofile" routerLinkActive="active">-->
+<!--    <cds-icon clrVerticalNavIcon shape="cog"></cds-icon>-->
+<!--    Zarządzanie profilem harcerski-->
+<!--  </a>-->
+  <a clrVerticalNavLink *ngIf="checkIfUserHasAdminPermission()" routerLink="manageadminrights" routerLinkActive="active">
+    <cds-icon clrVerticalNavIcon shape="cog"></cds-icon>
+    Zarządzanie uprawnieniami administracyjnymi
+  </a>
+<!--  <a clrVerticalNavLink routerLink="createorg" routerLinkActive="active">-->
+<!--    <cds-icon clrVerticalNavIcon shape="tasks"></cds-icon>-->
+<!--    Stwórz organizację-->
+<!--  </a>-->
+<!--  <a clrVerticalNavLink routerLink="editorg">-->
+<!--    <cds-icon clrVerticalNavIcon shape="note"></cds-icon>-->
+<!--    Edytuj organizację-->
+<!--  </a>-->
+<!--  <a clrVerticalNavLink routerLink="createorder">-->
+<!--    <cds-icon clrVerticalNavIcon shape="flame"></cds-icon>-->
+<!--    Stwórz rozkaz-->
+<!--  </a>-->
+  <a clrVerticalNavLink *ngIf="checkIfUserHasOwnerPermission()" routerLink="badgesrankhome">
+    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>
+    Stopnie i sprawności
+  </a>
+<!--  <a clrVerticalNavLink routerLink="badgesrankdashboard">-->
+<!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->
+<!--    Stopnie i sprawności - wybór typu-->
+<!--  </a>-->
+<!--  <a clrVerticalNavLink routerLink="createinsturctorattempt">-->
+<!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->
+<!--    Stwórz próbę na stopień instruktorski-->
+<!--  </a>-->
+<!--  <a clrVerticalNavLink routerLink="createscouttempt">-->
+<!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->
+<!--    Stwórz próbę na stopień harcerski-->
+<!--  </a>-->
+<!--  <a clrVerticalNavLink routerLink="createmeritbadgeattempt">-->
+<!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->
+<!--    Stwórz próbę na sprawność-->
+<!--  </a>-->
+<!--  <a clrVerticalNavLink routerLink="orderdashboard">-->
+<!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->
+<!--    Zeszyt rozkazów-->
+<!--  </a>-->
+  <a clrVerticalNavLink *ngIf="checkIfUserHasOwnerPermission()" routerLink="manageorg">
+    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>
+    Zarządzaj swoimi jednostkami
+  </a>
+<!--  <a clrVerticalNavLink routerLink="managesuborg">-->
+<!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->
+<!--    Zarządzaj jednostkami podległymi-->
+<!--  </a>-->
+<!--  <a clrVerticalNavLink routerLink="manageorgcommander">-->
+<!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->
+<!--    Zarządzaj komendantem jednostki-->
+<!--  </a>-->
+<!--  <a clrVerticalNavLink routerLink="manageorgmembers">-->
+<!--    <cds-icon clrVerticalNavIcon shape="bullseye"></cds-icon>-->
+<!--    Zarządzaj członkami jednostki-->
+<!--  </a>-->
+  <a clrVerticalNavLink (click)="signOut()">
+    <cds-icon clrVerticalNavIcon shape="logout"></cds-icon>
+    Wyloguj
+  </a>
+</clr-vertical-nav>

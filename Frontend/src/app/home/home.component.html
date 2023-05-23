@@ -1,0 +1,119 @@
+<div class="content">
+
+  <div class="content-header">
+    <h1>Czuwaj!</h1>
+    <h4>Zobacz co jeszcze czeka do odkrycia</h4>
+  </div>
+
+  <hr/>
+
+  <clr-spinner clrMedium aria-label="In progress" *ngIf="!dateIsFetched">Fetching data</clr-spinner>
+
+  <div class="cards-container" *ngIf="dateIsFetched" >
+    <div class="card clickable" *ngIf="!adminPermission" (click)="gotouserprofile()">
+      <div class="card-img">
+        <img src="assets/images/interfaceImages/mirror.jpg" alt="img">
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          Mój profil
+        </p>
+      </div>
+    </div>
+    <div class="card clickable" *ngIf="organizationOwnerPermission" (click)="gotobadgesrankhome()" >
+      <div class="card-img">
+        <img src="assets/images/interfaceImages/run_bridge.jpg" alt="img">
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          Próby na stopnie i sprawności
+        </p>
+      </div>
+    </div>
+    <div class="card clickable" *ngIf="organizationOwnerPermission" (click)="gotomanageorg()">
+      <div class="card-img">
+        <img src="assets/images/interfaceImages/map_and_people.jpg" alt="img">
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          Moje jednostki
+        </p>
+      </div>
+    </div>
+    <div class="card clickable" *ngIf="adminPermission" (click)="gotomanageadminrights()">
+      <div class="card-img">
+        <img src="assets/images/interfaceImages/map_and_people.jpg" alt="img">
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          Panel admina
+        </p>
+      </div>
+    </div>
+    <div class="card clickable"(click)="gotomanageprofile()">
+      <div class="card-img">
+        <img src="assets/images/interfaceImages/pensils.jpg" alt="img">
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          Zarządzanie kontem
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="content-header">
+    <h4>Twoje najbliższe zadania do zrobienia</h4>
+  </div>
+
+  <div class="tasks-container">
+    <div class="form-row">
+
+
+      <clr-datagrid  >
+        <clr-dg-column [clrDgField]="'nazwa'">Nazwa</clr-dg-column>
+        <clr-dg-column [clrDgField]="'creatorId'">Imie i nazwisko opiekuna</clr-dg-column>
+        <clr-dg-column [clrDgField]="'organization'">Organizacja</clr-dg-column>
+        <clr-dg-column [clrDgField]="'typ'">Typ</clr-dg-column>
+        <clr-dg-column [clrDgField]="'typ'">Na Co</clr-dg-column>
+
+
+
+
+        <clr-dg-row *clrDgItems="let attempt of getAttempts();let i = index" [attr.data-index]="i" [clrDgItem]="attempt">
+          <clr-dg-cell>{{attempt.name}}</clr-dg-cell>
+          <clr-dg-cell>{{attempt.creatorId!.name +" "+attempt.creatorId!.surname}}</clr-dg-cell>
+          <clr-dg-cell>{{attempt.organization!.name}}</clr-dg-cell>
+          <clr-dg-cell>{{attempt.TYPE}}</clr-dg-cell>
+          <clr-dg-cell>{{getAttemptForWhat(i)}}</clr-dg-cell>
+
+
+          <clr-dg-row-detail class="datagrid-row-detail" *clrIfExpanded >
+            <div *ngIf="attempt.meritBadgeId">
+              <span class="column-subheader">Zdobywana sprawność: {{attempt.meritBadgeId.name}}</span>
+            </div>
+            <div *ngIf="attempt.scoutRankId">
+              <span class="column-subheader">Zdobywany stopień harcerski: {{attempt.scoutRankId.name}}</span>
+            </div>
+            <div *ngIf="attempt.scoutInstructorRankId">
+              <span class="column-subheader">Zdobywany stopień instruktorski: {{attempt.scoutInstructorRankId.name}}</span>
+            </div>
+            <ol>
+              <li *ngFor="let task of attempt.attemptTasks">{{task.description}}</li>
+            </ol>
+          </clr-dg-row-detail>
+
+        </clr-dg-row>
+
+        <clr-dg-footer> <clr-dg-pagination #pagination [clrDgPageSize]="10">
+          <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]"></clr-dg-page-size>
+          {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+          z {{pagination.totalItems}} Próby
+        </clr-dg-pagination></clr-dg-footer>
+      </clr-datagrid>
+    </div>
+  </div>
+
+</div>

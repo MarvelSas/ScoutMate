@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+html, body, p, span{
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --defoultColor:  hsl(48, 95%, 48%);
+  --scoutInstructorColor: var(--defoultColor);
+}
+body{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+hr{
+  width: 80%;
+  border: 1px solid hsl(48, 95%, 48%);
+}
+
+.card-img img{
+  height: 150px;
+  width: auto;
+  min-width: 100%;
+  object-fit:cover;
+  filter: sepia(70%);
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+}
+
+.card-img img:hover{
+  filter: sepia(5%);
+}
+
+
+.org-img{
+  position: relative;
+  width: 2.7rem;
+  border-radius: 50%;
+  border: 3px solid var(--defoultColor);
+}
+.org-big-img{
+  position: relative;
+  width: 10.5rem;
+  border-radius: 50%;
+  border: 5px solid var(--defoultColor);
+  padding-top: .1rem;
+}

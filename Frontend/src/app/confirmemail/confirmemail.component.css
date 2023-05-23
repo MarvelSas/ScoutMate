@@ -1,0 +1,50 @@
+body {
+  font-size: 1.6rem;
+  font-family: "Open Sans", sans-serif;
+  color: #2b3e51;
+}
+
+#confirm-email-wrap {
+  background-color: #F5F5F5;
+  width: 35%;
+  margin: 30px auto;
+  text-align: center;
+  padding: 20px 0 20px 0;
+  border-radius: 4px;
+  box-shadow: 0px 30px 50px 0px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 4px;
+}
+
+button {
+  border: none;
+  display: block;
+  background-color: #FFBD3E;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  font-size: 18px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+
+p {
+  position: relative;
+}
+
+#confirm {
+  padding: 0 60px;
+}

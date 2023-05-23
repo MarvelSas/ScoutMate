@@ -1,0 +1,97 @@
+<div class="content">
+  <h1>Panel Administratora</h1>
+  <div class="form">
+    <form>
+      <p>Lista administratorów</p>
+      <div class="form-row">
+
+        <h3>Lista Adminów</h3>
+        <h4 *ngIf="appUserAdminChoosenToRevokePermission">Wybrany: {{appUserAdminChoosenToRevokePermission.name+" "+appUserAdminChoosenToRevokePermission.surname}}</h4>
+
+        <clr-datagrid [(clrDgSingleSelected)]="appUserAdminChoosenToRevokePermission" >
+          <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+          <clr-dg-column [clrDgField]="'surname'">Surname</clr-dg-column>
+
+          <clr-dg-column>Email</clr-dg-column>
+
+          <clr-dg-row *clrDgItems="let userAdminDTO of getAdminsDetailsList()" [clrDgItem]="userAdminDTO">
+            <clr-dg-cell>{{userAdminDTO.name}}</clr-dg-cell>
+            <clr-dg-cell>{{userAdminDTO.surname}}</clr-dg-cell>
+            <clr-dg-cell>{{userAdminDTO.email}}</clr-dg-cell>
+
+          </clr-dg-row>
+
+          <clr-dg-footer> <clr-dg-pagination #pagination [clrDgPageSize]="10">
+            <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]"></clr-dg-page-size>
+            {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+            z {{pagination.totalItems}} Adminów
+          </clr-dg-pagination></clr-dg-footer>
+        </clr-datagrid>
+        <div class="form-row">
+          <button class="btn" (click)="revokePermissionForAppUser()">Odbierz uprawnienia</button>
+        </div>
+      </div>
+      <hr>
+      <p>Nadaj uprawnienia administratora</p>
+      <div class="form-row">
+        <clr-combobox-container >
+          <label>Wybierz Użytkownika</label>
+          <clr-combobox [(ngModel)]="appUserDetailsAdmin" name="myState" required  >
+            <clr-options>
+              <clr-option *clrOptionItems="let user of getAppUserDetails(); field:'searchParam'" [clrValue]="user">
+                <cds-icon shape="man" role="img" aria-label="World is turning"></cds-icon> {{user.name+" "+user.surname}}
+
+              </clr-option>
+            </clr-options>
+          </clr-combobox>
+
+        </clr-combobox-container>
+      </div>
+      <div class="form-row">
+        <button class="btn" (click)="grandAdminPermission()">Nadaj uprawnienia</button>
+      </div>
+      <hr>
+      <div *ngIf="chiefExist">
+        <p>Odbierz rolę naczelnika</p>
+        <div class="form-row">
+
+          <input  disabled name="existChief" [value]="appUserChief.name+' '+appUserChief.surname"/>
+        </div>
+        <div class="form-row">
+          <button class="btn" (click)="deleteChiefPermission()">Odbierz rolę</button>
+        </div>
+
+      </div>
+      <div *ngIf="!chiefExist">
+        <p>Nadaj rolę naczelnika</p>
+        <div class="form-row">
+          <clr-combobox-container >
+            <label>Wybierz Użytkownika</label>
+            <clr-combobox [(ngModel)]="appUserChief" name="myState1" required  >
+              <clr-options>
+                <clr-option *clrOptionItems="let user of getAppUserDetails(); field:'searchParam'" [clrValue]="user">
+                  <cds-icon shape="man" role="img" aria-label="World is turning"></cds-icon> {{user.name+" "+user.surname}}
+
+                </clr-option>
+              </clr-options>
+            </clr-combobox>
+
+          </clr-combobox-container>
+        </div>
+        <div class="form-row">
+          <button class="btn" (click)="grantPermissionToChief()">Nadaj rolę</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+<clr-modal [(clrModalOpen)]="showErrorValidationModal">
+  <h3 class="modal-title">Błąd</h3>
+  <div class="modal-body">{{errorMessage}}</div>
+  <div class="modal-footer">
+    <button type="button" class="btn" (click)="showErrorValidationModal = false">Zamknij</button>
+  </div>
+</clr-modal>

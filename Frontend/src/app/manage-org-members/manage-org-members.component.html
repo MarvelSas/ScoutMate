@@ -1,0 +1,90 @@
+<div class="content">
+  <h1>Zarządzaj członkami jednostki</h1>
+
+  <div class="form">
+    <h3>Nazwa: {{nameOrganization}}</h3>
+    <form>
+      <p>Wybierz osobę funkcyjną z listy poniżej</p>
+
+      <div class="form-row">
+        <clr-combobox-container >
+          <label>Wybierz Użytkownika</label>
+          <clr-combobox [(ngModel)]="appUserDetails" name="myState" required  >
+            <clr-options>
+              <clr-option *clrOptionItems="let user of getAppAllAppUsers(); field:'searchParam'" [clrValue]="user">
+                <cds-icon shape="man" role="img" aria-label="World is turning"></cds-icon> {{user.name+" "+user.surname}}
+
+              </clr-option>
+            </clr-options>
+          </clr-combobox>
+
+        </clr-combobox-container>
+      </div>
+
+
+      <div class="form-row">
+        {{roleName}}
+        <select clrSelect style="width: 100%;"
+                [(ngModel)]="roleName"
+
+                name="rola"
+        >
+          <option *ngFor="let roleNameInner of getRoleNameList()" >{{roleNameInner}}</option>
+
+        </select>
+      </div>
+
+      <div class="form-row">
+        <button class="btn btn-primary" (click)="addAppUserToOrganization()">Dodaj osobę</button>
+      </div>
+
+
+      <div class="form-row">
+
+        <h3>Lista członków organizacji</h3>
+        <h4 *ngIf="appUserFromOrganization">{{appUserFromOrganization.name+" "+appUserFromOrganization.surname}}</h4>
+
+        <clr-datagrid [(clrDgSingleSelected)]="appUserFromOrganization" >
+          <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+          <clr-dg-column [clrDgField]="'surname'">Surname</clr-dg-column>
+
+          <clr-dg-column>Email</clr-dg-column>
+
+          <clr-dg-row *clrDgItems="let userFromOrganization of getAllAppUsersFromOrganization()" [clrDgItem]="userFromOrganization">
+            <clr-dg-cell>{{userFromOrganization.name}}</clr-dg-cell>
+            <clr-dg-cell>{{userFromOrganization.surname}}</clr-dg-cell>
+            <clr-dg-cell>{{userFromOrganization.email}}</clr-dg-cell>
+
+          </clr-dg-row>
+
+          <clr-dg-footer> <clr-dg-pagination #pagination [clrDgPageSize]="10">
+            <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]"></clr-dg-page-size>
+            {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+            z {{pagination.totalItems}} użytkowników
+          </clr-dg-pagination></clr-dg-footer>
+        </clr-datagrid>
+      </div>
+      <div class="form-col">
+        <div class="rowNew"><button class="btn btn-primary" (click)="goToManageScoutProfile()" [disabled]="getAllAppUsersFromOrganization().length<=0 || appUserFromOrganization==null">Modyfikuj</button></div>
+        <div class="rowNew"><button class="btn btn-primary" (click)="deleteUserFromOrganization()" [disabled]="getAllAppUsersFromOrganization().length<=0 || appUserFromOrganization==null">Usuń</button></div>
+
+
+
+      </div>
+
+
+    </form>
+
+  </div>
+
+
+</div>
+
+
+<clr-modal [(clrModalOpen)]="showErrorValidationModal">
+  <h3 class="modal-title">Błąd</h3>
+  <div class="modal-body">Nie został wybrany użytkownik</div>
+  <div class="modal-footer">
+    <button type="button" class="btn" (click)="showErrorValidationModal = false">Zamknij</button>
+  </div>
+</clr-modal>

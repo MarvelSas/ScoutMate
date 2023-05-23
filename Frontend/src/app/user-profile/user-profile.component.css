@@ -1,0 +1,142 @@
+.user-profile{
+  display: flex;
+  flex-direction: row;
+}
+
+.user-img{
+  position: relative;
+  width: 10rem;
+  border-radius: 50%;
+  border: 5px solid var(--scoutInstructorColor);
+  padding-top: .1rem;
+
+}
+.org-img{
+  position: relative;
+  width: 3rem;
+  border-radius: 50%;
+  border: 3px solid var(--defoultColor);
+
+}
+
+.user-info{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  right: 3rem;
+  justify-content: center;
+}
+
+.user-info span{
+  font-weight: bold;
+}
+
+hr{
+  width: 80%;
+  border: 1px solid hsl(48, 95%, 48%);
+}
+
+.badge-img{
+  width: 5rem;
+  background-color: var(--scoutInstructorColor);
+  border-radius: 50%;
+  position: relative;
+  left: -3rem;
+  top: 2.5rem;
+  padding: 5px;
+}
+
+.user-data{
+  background-color: rgba(176, 176, 176, 0.3);
+  padding: .5rem;
+  max-width: 8rem;
+  position: relative;
+  top: 7rem;
+  left: -4rem;
+  z-index: 99999;
+}
+
+clr-progress-bar{
+  height: .5rem;
+  font-size: .5rem;
+}
+
+.user-data span{
+  font-size: 1.2rem;
+}
+
+.clr-row{
+  width: 80%;
+}
+
+.clr-col-6{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.column-header{
+  text-align: center;
+  width: 100%;
+  font-weight: bolder;
+  font-size: 1.3rem;
+}
+
+.column-subheader{
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+}
+
+.center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ef-image-container{
+  /*border-right: 4px dotted black;*/
+  /*border-bottom: 4px dotted black;*/
+  /*border-left: 4px solid black;*/
+  /*border-top: 4px dotted black;*/
+  /*border-radius: 50%;*/
+  width: 7rem;
+  height: 7rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  rotate: 50deg;
+}
+
+.ef-image{
+  width: 7rem;
+  height: 7rem;
+  padding: 1rem;
+  position: relative;
+  z-index: 9999;
+  rotate: -50deg;
+}
+.ef-image[title]:hover:after {
+  content: attr(data);
+  padding: 4px 8px;
+  color: rgba(0,0,0,0.5);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  white-space: nowrap;
+  z-index: 2;
+  border-radius: 5px ;
+  background: rgba(0,0,0,0.5);
+}
+
+td {
+  vertical-align: middle;
+}
+.filled{
+  background-color: black;
+}
+.datagrid-row-detail {
+  display: block;
+}
