@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CustomResponse} from "../models/CustomResponse";
 import {AppUserProfileDetails} from "../models/AppUserProfileDetails";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,41 +15,41 @@ export class OrganizationService {
   getAllOrganizationUsersAttempt(organizationId : number):Observable<CustomResponse>{
     let params = new HttpParams()
       .set('idOrganization', organizationId);
-    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/organization/getAllOrganizationUsersAttempt',{params:params});
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/organization/getAllOrganizationUsersAttempt`,{params:params});
   }
   getUserOwnedOrganizations():Observable<CustomResponse>{
-    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/organization/getUserOwnedOrganizations')
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/organization/getUserOwnedOrganizations`)
   }
   getAllActiveLines(organizationId : number): Observable<CustomResponse> {
 
     const params = new HttpParams().append('idOrganization', organizationId);
 
-    return this.http.get<CustomResponse>(`http://localhost:8080/api/v1/organization/allActiveLines`,{params : params});
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/organization/allActiveLines`,{params : params});
   }
 
   getOrganizationWhereUserBelong(organizationId : number): Observable<CustomResponse> {
 
     const params = new HttpParams().append('idOrganization', organizationId);
 
-    return this.http.get<CustomResponse>(`http://localhost:8080/api/v1/organization/getOrganization`,{params : params});
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/organization/getOrganization`,{params : params});
   }
   getSubOrganizationBelongToMainOrganization(organizationId : number): Observable<CustomResponse> {
 
     const params = new HttpParams().append('idOrganization', organizationId);
 
-    return this.http.get<CustomResponse>(`http://localhost:8080/api/v1/organization/getSubOrganizationBelongToMainOrganization`,{params : params});
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/organization/getSubOrganizationBelongToMainOrganization`,{params : params});
   }
   getAllUsersFromOrganization(organizationId : number): Observable<CustomResponse> {
 
     const params = new HttpParams().append('idOrganization', organizationId);
 
-    return this.http.get<CustomResponse>(`http://localhost:8080/api/v1/organization/allUsersFromOrganization`, {params: params});
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/organization/allUsersFromOrganization`, {params: params});
   }
 
   getOrganization(organizationId : number): Observable<CustomResponse>{
 
     const params = new HttpParams().append('idOrganization', organizationId );
-    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/organization/getOrganization',{params:params});
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/organization/getOrganization`,{params:params});
 
   }
 
@@ -69,7 +70,7 @@ export class OrganizationService {
 
     let params = new HttpParams()
       .set('organizationId', organizationId )
-    return this.http.put<CustomResponse>('http://localhost:8080/api/v1/organization/changeOrganizationPhoto',uploadForm,{params:params});
+    return this.http.put<CustomResponse>(`${environment.backendUrl}/api/v1/organization/changeOrganizationPhoto`,uploadForm,{params:params});
 
   }
 
@@ -78,7 +79,7 @@ export class OrganizationService {
     let params = new HttpParams()
       .set('organizationId', organizationId )
       .set('organizationName', organizationName )
-    return this.http.put<CustomResponse>('http://localhost:8080/api/v1/organization/changeOrganizationName',{},{params:params});
+    return this.http.put<CustomResponse>(`${environment.backendUrl}/api/v1/organization/changeOrganizationName`,{},{params:params});
 
   }
 
@@ -86,7 +87,7 @@ export class OrganizationService {
   getAllOwnersFromOrganization(organizationId : number): Observable<CustomResponse>{
 
     const params = new HttpParams().append('idOrganization', organizationId );
-    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/organization/getAllOwnerFromOrganization',{params:params});
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/organization/getAllOwnerFromOrganization`,{params:params});
 
   }
 
@@ -96,7 +97,7 @@ export class OrganizationService {
     let params = new HttpParams()
       .set('idOrganization', organizationId )
       .set('email', appUserEmail.toString() )
-    return this.http.patch<CustomResponse>('http://localhost:8080/api/v1/organization/grantOwnerPermission',{},{params:params});
+    return this.http.patch<CustomResponse>(`${environment.backendUrl}/api/v1/organization/grantOwnerPermission`,{},{params:params});
 
   }
 
@@ -105,7 +106,7 @@ export class OrganizationService {
     let params = new HttpParams()
       .set('idOrganization', organizationId )
       .set('email', appUserEmail.toString() )
-    return this.http.patch<CustomResponse>('http://localhost:8080/api/v1/organization/removeOwnerPermission',{},{params:params});
+    return this.http.patch<CustomResponse>(`${environment.backendUrl}/api/v1/organization/removeOwnerPermission`,{},{params:params});
 
   }
 
@@ -128,7 +129,7 @@ export class OrganizationService {
       .set('superiorOrganizationId', organizationId )
       .set('email', ownerEmail.toString() )
       .set('name', organizationName )
-    return this.http.post<CustomResponse>('http://localhost:8080/api/v1/organization/suborganization',uploadForm,{params:params});
+    return this.http.post<CustomResponse>(`${environment.backendUrl}/api/v1/organization/suborganization`,uploadForm,{params:params});
 
   }
 
@@ -136,7 +137,7 @@ export class OrganizationService {
   getUsersFromOutSideOrganization(organizationId : number): Observable<CustomResponse>{
 
     const params = new HttpParams().append('organizationId', organizationId );
-    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/organization/getUsersFromOutSideOrganization',{params:params});
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/organization/getUsersFromOutSideOrganization`,{params:params});
 
   }
 
@@ -149,14 +150,14 @@ export class OrganizationService {
       .set('email', email.toString() )
       .set('idOrganization', idOrganization )
       .set('nameRole', nameRole )
-    return this.http.post<CustomResponse>('http://localhost:8080/api/v1/organization/addusertoorganization',{},{params:params});
+    return this.http.post<CustomResponse>(`${environment.backendUrl}/api/v1/organization/addusertoorganization`,{},{params:params});
   }
 
 
   getAllUsersFromOrganizationWithOutYou(idOrganization : number): Observable<CustomResponse>{
 
     const params = new HttpParams().append('idOrganization', idOrganization );
-    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/organization/getAllUsersFromOrganizationWithOutYou',{params:params});
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/organization/getAllUsersFromOrganizationWithOutYou`,{params:params});
 
   }
 
@@ -165,19 +166,19 @@ export class OrganizationService {
     let params = new HttpParams()
       .set('email', email.toString() )
       .set('idOrganization', idOrganization );
-    return this.http.delete<CustomResponse>('http://localhost:8080/api/v1/organization/delateFromOrganization',{params:params});
+    return this.http.delete<CustomResponse>(`${environment.backendUrl}/api/v1/organization/delateFromOrganization`,{params:params});
 
   }
 
   putChangeUserDetails(appUserProfileDetails:AppUserProfileDetails): Observable<CustomResponse>{
 
-    return this.http.put<CustomResponse>('http://localhost:8080/api/v1/organization/UserProfailDetails',appUserProfileDetails);
+    return this.http.put<CustomResponse>(`${environment.backendUrl}/api/v1/organization/UserProfailDetails`,appUserProfileDetails);
 
   }
 
   getChiefOfScout(): Observable<CustomResponse>{
 
-    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/organization/getChiefOfScout');
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/organization/getChiefOfScout`);
 
   }
 
@@ -188,7 +189,7 @@ export class OrganizationService {
     let params = new HttpParams()
       .set('email', email.toString() )
 
-    return this.http.post<CustomResponse>('http://localhost:8080/api/v1/organization/admin/grantPermissionToChiefOfScout',{},{params:params});
+    return this.http.post<CustomResponse>(`${environment.backendUrl}/api/v1/organization/admin/grantPermissionToChiefOfScout`,{},{params:params});
   }
 
   deleteChiefPermission(email : String):Observable<CustomResponse>{
@@ -196,7 +197,7 @@ export class OrganizationService {
     let params = new HttpParams()
       .set('email', email.toString() )
 
-    return this.http.delete<CustomResponse>('http://localhost:8080/api/v1/organization/admin/deleteChiefPermission',{params:params});
+    return this.http.delete<CustomResponse>(`${environment.backendUrl}/api/v1/organization/admin/deleteChiefPermission`,{params:params});
   }
 
 

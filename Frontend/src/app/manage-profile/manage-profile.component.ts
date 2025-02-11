@@ -6,6 +6,7 @@ import localeFr from '@angular/common/locales/fr';
 import { Observable } from 'rxjs';
 import {HttpEventType, HttpResponse} from "@angular/common/http";
 import {UserProfileEdit} from "../models/user-profile-edit.model";
+import { environment } from 'src/environments/environment';
 
 
 registerLocaleData(localeFr);
@@ -15,6 +16,8 @@ registerLocaleData(localeFr);
   styleUrls: ['./manage-profile.component.css']
 })
 export class ManageProfileComponent implements OnInit {
+
+  public enviormentUrl = environment.backendUrl;
 
   constructor(
     private userProfileService: UserProfileService,
@@ -45,7 +48,7 @@ export class ManageProfileComponent implements OnInit {
         this.userDetails = res;
         console.log(res);
         if (this.userDetails.data.userProfilDetails.photo){
-          this.preview = 'http://localhost:8080/images/appUserPhoto/' + this.userDetails.data.userProfilDetails.photo;
+          this.preview = `${environment.backendUrl}/images/appUserPhoto/` + this.userDetails.data.userProfilDetails.photo;
         }
         console.log(this.preview);
       } else {

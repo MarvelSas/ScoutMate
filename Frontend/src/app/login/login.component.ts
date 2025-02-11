@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {FormControl, FormGroup, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -28,23 +29,14 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    //let params = new H
-    //params = params.append('email', this.model.email);
-    //params = params.append('password', this.model.password);
     let url = '/api/v1/login';
-    this.http.get<any>(url, {headers:{
+    this.http.get<any>(environment.backendUrl + url, {headers:{
       email: this.model.email,
       password: this.model.password
       }}).subscribe( res =>{
       if (res) {
-        //this.sessionId = res.sessionId;
         this.access_token = res.access_token;
         this.refresh_token = res.refresh_token;
-
-        /*sessionStorage.setItem(
-          'token',
-          this.sessionId
-        );*/
         localStorage.setItem('access_token', this.access_token);
         localStorage.setItem('refresh_token', this.refresh_token);
         console.log("User is logged in");

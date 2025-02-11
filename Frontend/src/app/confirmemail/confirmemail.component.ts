@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute} from "@angular/router";
 import {HttpClient, HttpParams} from "@angular/common/http";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-confirmemail',
@@ -16,7 +17,7 @@ export class ConfirmemailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let url = '/api/v1/registration/confirm';
+    let url = `${environment.backendUrl}/api/v1/registration/confirm`;
     this.route.queryParams.subscribe(params => {this.http.get<any>(url, {params:params}).subscribe();
     console.log(params);
     console.log('params')})

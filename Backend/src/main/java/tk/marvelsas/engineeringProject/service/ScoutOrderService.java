@@ -20,8 +20,11 @@ import tk.marvelsas.engineeringProject.repository.AppUserRepository;
 import tk.marvelsas.engineeringProject.repository.ScoutOrderRepository;
 import tk.marvelsas.engineeringProject.repository.OrganizationRepository;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
@@ -39,7 +42,7 @@ public class ScoutOrderService {
  private final ScoutOrderRepository orderRepository;
  private final OrganizationRepository organizationRepository;
  private final ActionQueueLineRepository actionQueueLineRepository;
-
+ private final ServletContext servletContext;
 
 
  public boolean createOrder(Integer organizationId, OrderInputDTO order){
@@ -118,17 +121,22 @@ public class ScoutOrderService {
    PdfWriter.getInstance(document, response.getOutputStream());
    document.open();
 
+   // Define the relative path to the folder
+   Path relativePath = Paths.get("src/main/resources");
+
+   // Convert the relative path to an absolute path
+   Path absolutePath = relativePath.toAbsolutePath();
 
 
   final String FONT = "resources/Fonts/times.ttf";
 
 
-   BaseFont urName = BaseFont.createFont("D:\\Project\\Prywatne\\ScoutMate\\ScoutMate\\Backend\\src\\main\\resources\\Fonts\\arial.ttf", BaseFont.IDENTITY_H,BaseFont.EMBEDDED);
+   BaseFont urName = BaseFont.createFont(absolutePath+"/Fonts/arial.ttf", BaseFont.IDENTITY_H,BaseFont.EMBEDDED);
 
 
 
    //Logo
-   Image jpg = Image.getInstance("D:\\Project\\Prywatne\\ScoutMate\\ScoutMate\\Backend\\src\\main\\resources\\Images\\orderPDFLogo\\orderImage.png");
+   Image jpg = Image.getInstance(absolutePath+"/Images/orderPDFLogo/orderImage.png");
    jpg.setAlignment(Image.ALIGN_CENTER);
    jpg.scalePercent(80);
 
@@ -535,17 +543,22 @@ public class ScoutOrderService {
   PdfWriter.getInstance(document, response.getOutputStream());
   document.open();
 
+  // Define the relative path to the folder
+  Path relativePath = Paths.get("src/main/resources");
+
+  // Convert the relative path to an absolute path
+  Path absolutePath = relativePath.toAbsolutePath();
 
 
   final String FONT = "resources/Fonts/times.ttf";
 
 
-  BaseFont urName = BaseFont.createFont("D:\\Project\\Prywatne\\ScoutMate\\ScoutMate\\Backend\\src\\main\\resources\\Fonts\\arial.ttf", BaseFont.IDENTITY_H,BaseFont.EMBEDDED);
+  BaseFont urName = BaseFont.createFont(absolutePath+"/Fonts/arial.ttf", BaseFont.IDENTITY_H,BaseFont.EMBEDDED);
 
 
 
   //Logo
-  Image jpg = Image.getInstance("D:\\Project\\Prywatne\\ScoutMate\\ScoutMate\\Backend\\src\\main\\resources\\Images\\orderPDFLogo\\orderImage.png");
+  Image jpg = Image.getInstance(absolutePath+"/Images/orderPDFLogo/orderImage.png");
   jpg.setAlignment(Image.ALIGN_CENTER);
   jpg.scalePercent(80);
 

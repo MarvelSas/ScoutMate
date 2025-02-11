@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient, HttpParams} from "@angular/common/http";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-reset-password',
@@ -19,7 +20,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   resetPassword(): void {
-    let url = "/api/v1/forgetPassword"
+    let url = `${environment.backendUrl}/api/v1/forgetPassword`
     this.http.post<any>(url, this.model.email).subscribe();
     //console.log(this.model.email)
     this.router.navigate(['']);

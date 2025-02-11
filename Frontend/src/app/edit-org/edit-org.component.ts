@@ -3,6 +3,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 import {OrganizationService} from "../services/organization.service";
 import {CustomResponse} from "../models/CustomResponse";
 import {Organization} from "../models/Organization";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edit-org',
@@ -18,7 +19,7 @@ export class EditOrgComponent implements OnInit {
   public message : string ="";
   public finalPhoto : any;
   public organizationName:string=""
-
+  public enviormentUrl = environment.backendUrl;
 
 
 

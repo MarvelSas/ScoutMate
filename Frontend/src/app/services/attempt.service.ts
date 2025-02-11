@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CustomResponse} from "../models/CustomResponse";
 import {Attempt} from "../models/Attempt";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +17,12 @@ export class AttemptService {
   getAllScoutInstructorRankAvailableForAppUserAttempt(emailScout:string): Observable<CustomResponse>{
 
     const params = new HttpParams().append('emailScout', emailScout);
-    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/attempt/allScoutInstructorRankAvailableForAppUserAttempt',{params:params});
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/attempt/allScoutInstructorRankAvailableForAppUserAttempt`,{params:params});
 
   }
 
   getRulesPdf(): Observable<any> {
-    return this.http.get(`http://localhost:8080/pdf/Regulamin_gwiazdek_zuchowych_i_stopni_harcerskich.pdf`,{observe:'response',responseType:'blob'});
+    return this.http.get(`${environment.backendUrl}/pdf/Regulamin_gwiazdek_zuchowych_i_stopni_harcerskich.pdf`,{observe:'response',responseType:'blob'});
   }
 
 
@@ -30,13 +31,13 @@ export class AttemptService {
       .set('emailScout', emailScout)
       .set('organizationId', organizationId);
 
-    return this.http.post<CustomResponse>(`http://localhost:8080/api/v1/attempt/addAttemptScoutInstructorRank`,attempt,{params : params});
+    return this.http.post<CustomResponse>(`${environment.backendUrl}/api/v1/attempt/addAttemptScoutInstructorRank`,attempt,{params : params});
   }
 
 
   getAllScoutRankAvailable(emailScout:string):Observable<CustomResponse>{
     const params = new HttpParams().append('emailScout', emailScout);
-    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/attempt/allScoutRankAvailableForAppUserAttempt',{params:params});
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/attempt/allScoutRankAvailableForAppUserAttempt`,{params:params});
   }
 
   createAttemptScoutRank(emailScout : string,organizationId : number, attempt:Attempt): Observable<CustomResponse>{
@@ -44,41 +45,41 @@ export class AttemptService {
       .set('emailScout', emailScout)
       .set('organizationId', organizationId);
 
-    return this.http.post<CustomResponse>(`http://localhost:8080/api/v1/attempt/addAttemptScoutRank`,attempt,{params : params});
+    return this.http.post<CustomResponse>(`${environment.backendUrl}/api/v1/attempt/addAttemptScoutRank`,attempt,{params : params});
   }
 
   getAllMeritBadgesAvailable(emailScout:string):Observable<CustomResponse>{
     const params = new HttpParams().append('emailScout', emailScout);
-    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/attempt/getAllMeritBadgeForAppUserAttempt',{params:params});
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/attempt/getAllMeritBadgeForAppUserAttempt`,{params:params});
   }
 
   createAttemptMeritBadge(emailScout : string,organizationId : number, attempt:Attempt): Observable<CustomResponse>{
     let params = new HttpParams()
       .set('emailScout', emailScout)
       .set('organizationId', organizationId);
-    return this.http.post<CustomResponse>(`http://localhost:8080/api/v1/attempt/addAttemptMeritbadge`,attempt,{params : params});
+    return this.http.post<CustomResponse>(`${environment.backendUrl}/api/v1/attempt/addAttemptMeritbadge`,attempt,{params : params});
   }
 
 
   getAllMyCreatedAttempt():Observable<CustomResponse>{
-    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/attempt/getAllMyCreatedAttempt')
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/attempt/getAllMyCreatedAttempt`)
   }
 
   closeAttempt(attemptId : number, ifAttemptResultPositive : boolean):Observable<CustomResponse>{
     let params = new HttpParams()
       .set('ifAttemptResultIsPositive', ifAttemptResultPositive)
       .set('attemptId', attemptId )
-    return this.http.put<CustomResponse>('http://localhost:8080/api/v1/attempt/closeAttempt',{},{params:params});
+    return this.http.put<CustomResponse>(`${environment.backendUrl}/api/v1/attempt/closeAttempt`,{},{params:params});
 
   }
   getAllScoutRank():Observable<CustomResponse>{
-    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/attempt/scoutranks')
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/attempt/scoutranks`)
   }
   getAllScoutInstructorRank():Observable<CustomResponse>{
-    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/attempt/scoutinstructorranks')
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/attempt/scoutinstructorranks`)
   }
   getMyAllAppliedAttemptOpen():Observable<CustomResponse>{
-    return this.http.get<CustomResponse>('http://localhost:8080/api/v1/attempt/getMyAllAppliedAttemptOpen')
+    return this.http.get<CustomResponse>(`${environment.backendUrl}/api/v1/attempt/getMyAllAppliedAttemptOpen`)
   }
 
 

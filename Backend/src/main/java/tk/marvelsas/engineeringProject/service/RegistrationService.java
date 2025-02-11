@@ -1,6 +1,8 @@
 package tk.marvelsas.engineeringProject.service;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.marvelsas.engineeringProject.model.AppUser;
@@ -12,13 +14,16 @@ import java.util.ArrayList;
 
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class RegistrationService {
 
     private final AppUserService appUserService;
     private final EmailValidator emailValidator;
     private final  ConfirmationTokenService confirmationTokenService;
     private final EmailSander emailSander;
+
+    @Value("${application.frontend.url}")
+    private String frontendUrl;
 
     public String register(RegistrationRequest request) {
        boolean isValidEmail= emailValidator.test(request.getEmail());
@@ -29,7 +34,7 @@ public class RegistrationService {
 
 
         String token = appUserService.createUser(new AppUser(request.getEmail(), request.getPassword(), request.getName(), request.getSurname(), request.getBirthday(), request.getNickName(), new ArrayList<>()));
-        String link="http://localhost:4200/confirm?token="+token;
+        String link=frontendUrl+"/confirm?token="+token;
        emailSander. send(request.getEmail(),buildEmail(request.getName(),link),"register");
        return token;
     }
@@ -52,7 +57,7 @@ public class RegistrationService {
             String newToken=confirmationTokenService.setExpiredToken(token);
             AppUser appUser = confirmationToken.getAppUser();
 
-            String link="http://localhost:4200/confirm?token="+newToken;
+            String link=frontendUrl+"/confirm?token="+newToken;
             emailSander. send(appUser.getEmail(),buildEmail(appUser.getName(),link),"register");
 
             return "ExpiredToken -new Token Send to You";

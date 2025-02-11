@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @WebServlet("/pdf/*")
 public class PDFServlet extends HttpServlet {
@@ -15,7 +17,7 @@ public class PDFServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
     {
         String filename = URLDecoder.decode(request.getPathInfo().substring(1), "UTF-8");
-        File file = new File("D:\\Project\\Prywatne\\ScoutMate\\ScoutMate\\Backend\\src\\main\\resources\\pdf\\", filename);
+        File file = new File("src/main/resources/pdf/"+filename);
         response.setHeader("Content-Type", getServletContext().getMimeType(filename));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"" + file.getName() + "\"");

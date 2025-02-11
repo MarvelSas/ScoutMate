@@ -16,7 +16,7 @@
 
       <div  class="form-row">
         <img *ngIf="!url" style="max-height: 200px; max-width: 200px;"  alt="user"
-             [attr.src]="'http://localhost:8080/images/organizationPhoto/'+(organization.image===null?'alert-circle.svg':organization.image) | secure | async"/>
+             [attr.src]="enviormentUrl+'/images/organizationPhoto/'+(organization.image===null?'alert-circle.svg':organization.image) | secure | async"/>
         <img *ngIf="url" style="max-height: 200px; max-width: 200px;"  alt="user"
              [attr.src]="url"/>
       </div>

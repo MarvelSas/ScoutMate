@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
-    let url = '/api/v1/registration';
+    let url = `${environment.backendUrl}/api/v1/registration`;
     this.http.post<any>(url, {
       email: this.model.email,
       password: this.model.password,

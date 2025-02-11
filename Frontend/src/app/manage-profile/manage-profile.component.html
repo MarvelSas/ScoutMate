@@ -35,7 +35,7 @@
       </div>
 
 
-      <hr style="..."/>
+      <hr/>
 
       <div class="form-row">
         <h3>Ustawienia zdjęcia profilowego</h3>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-row">
-        <img [attr.src]="(preview==''?'http://localhost:8080/images/appUserPhoto/user.svg':preview) | secure | async" />
+        <img [attr.src]="(preview==''?enviormentUrl+'/images/appUserPhoto/user.svg':preview) | secure | async" />
       </div>
 
       <div class="form-row">

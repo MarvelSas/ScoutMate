@@ -8,11 +8,11 @@
         <clr-progress-bar clrValue="{{userDetails.data.userProfilDetails.scoutRank.level/7*100 |  number : '1.0-2'}}" clrSuccess clrLabeled></clr-progress-bar>
       </div>
       <img  class="user-img" alt="user"
-            [attr.src]="'http://localhost:8080/images/appUserPhoto/'+(userDetails.data.userProfilDetails.photo===null?'user.svg':userDetails.data.userProfilDetails.photo) | secure | async"
+            [attr.src]="enviormentUrl+'/images/appUserPhoto/'+(userDetails.data.userProfilDetails.photo===null?'user.svg':userDetails.data.userProfilDetails.photo) | secure | async"
       >
       <span class="img-badge">
         <img class="badge-img" alt="badge"
-             [attr.src]="'http://localhost:8080/images/scoutRankPhoto/'+(userDetails.data.userProfilDetails.scoutRank.imageURL===null?'rekrut.png':userDetails.data.userProfilDetails.scoutRank.imageURL) | secure | async"
+             [attr.src]="enviormentUrl+'/images/scoutRankPhoto/'+(userDetails.data.userProfilDetails.scoutRank.imageURL===null?'rekrut.png':userDetails.data.userProfilDetails.scoutRank.imageURL) | secure | async"
         >
       </span>
     </div>
@@ -58,7 +58,7 @@
         <tbody>
         <tr *ngFor="let role of this.userDetails.data.userProfilDetails.roles">
           <td><img *ngIf="role.organizationRole?.image!=''"  class="org-img" alt="org-img"
-                    [attr.src]="'http://localhost:8080/images/organizationPhoto/'+role.organizationRole?.image | secure | async"
+                    [attr.src]="enviormentUrl+'/images/organizationPhoto/'+role.organizationRole?.image | secure | async"
           ></td>
           <td>{{ role.organizationRole?.name}}</td>
           <td>{{ role.organizationRole?.organizationType}}</td>

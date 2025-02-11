@@ -85,7 +85,7 @@
 
       <div class="user-image-container">
         <img class="org-big-img" alt="user"
-             [attr.src]="'http://localhost:8080/images/organizationPhoto/'+(currentOrganization.image===null?'alert-circle.svg':currentOrganization.image) | secure | async"/>
+             [attr.src]="enviormentUrl+'/images/organizationPhoto/'+(currentOrganization.image===null?'alert-circle.svg':currentOrganization.image) | secure | async"/>
 
       </div>
     </div>
@@ -108,7 +108,7 @@
                      >
           <td>
             <img class="org-img" alt="user"
-                    [attr.src]="'http://localhost:8080/images/organizationPhoto/'+(subOrganization.image===null?'alert-circle.svg':subOrganization.image) | secure | async"
+                    [attr.src]="enviormentUrl+'/images/organizationPhoto/'+(subOrganization.image===null?'alert-circle.svg':subOrganization.image) | secure | async"
           ></td>
           <td>{{subOrganization.name}}</td>
           <td>{{subOrganization.organizationType}}</td>

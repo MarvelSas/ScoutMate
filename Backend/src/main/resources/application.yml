@@ -1,9 +1,11 @@
 spring:
   datasource:
-    password:
-    url: jdbc:mysql://localhost/engineeringproject
-    username: root
-
+#    password: password123
+#    url: jdbc:mysql://localhost/engineeringproject
+#    username: root
+    password: ${DATABASE_PASSWORD}
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
 
 
 
@@ -28,4 +30,11 @@ spring:
           starttls:
             enable: true
 
+
+application:
+  frontend:
+    url: ${FRONTEND_URL}
+  security:
+    cors:
+      allowed-origins: ${CORS_ALLOWED_ORIGINS}
 

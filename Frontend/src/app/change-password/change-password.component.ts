@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
 import {HttpClient, HttpParams} from "@angular/common/http";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-change-password',
@@ -20,7 +21,7 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   changePassword(): void {
-    let url = '/api/v1/forgetPassword/change';
+    let url = `${environment.backendUrl}/api/v1/forgetPassword/change`;
     this.route.queryParams.subscribe(params => {this.http.post<any>(url, this.model.password, {params:params}).subscribe()})
     this.router.navigate(['']);
   }

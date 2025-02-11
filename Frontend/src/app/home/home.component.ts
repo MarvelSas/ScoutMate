@@ -6,6 +6,7 @@ import {CustomResponse} from "../models/CustomResponse";
 import {AppUserProfileDetails} from "../models/AppUserProfileDetails";
 import {AttemptService} from "../services/attempt.service";
 import {Attempt} from "../models/Attempt";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -54,7 +55,7 @@ getAttemptForWhat(id:number):String{
 
 
   ngOnInit(): void {
-    this.http.get<any>('/api/v1/appUser/getMyUserDetails').subscribe(res => {
+    this.http.get<any>(`${environment.backendUrl}/api/v1/appUser/getMyUserDetails`).subscribe(res => {
       if (res) {
         console.log('List', res);
       } else {

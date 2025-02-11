@@ -4,6 +4,8 @@ import {Organization} from "../models/Organization";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {CustomResponse} from "../models/CustomResponse";
 import {AppUserOrganization} from "../models/AppUserOrganization";
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-manage-suborg',
@@ -12,12 +14,15 @@ import {AppUserOrganization} from "../models/AppUserOrganization";
 })
 export class ManageSuborgComponent implements OnInit {
 
+
+
   public mainOrganization:Organization= new Organization();
   public organizations:Organization[]=[];
   public staticOrganization=0;
   public currentOrganization : Organization = new Organization();
   public currentSubOrganization:Organization[]=[];
   public currentOrganizationUsers:AppUserOrganization[]=[];
+  public enviormentUrl = environment.backendUrl;
 
   constructor(public organizationService:OrganizationService,private  route:ActivatedRoute,private router: Router) {
 

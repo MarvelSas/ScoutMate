@@ -14,7 +14,7 @@ public class ImageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
     {
         String filename = URLDecoder.decode(request.getPathInfo().substring(1), "UTF-8");
-        File file = new File("D:\\Project\\Prywatne\\ScoutMate\\ScoutMate\\Backend\\src\\main\\resources\\Images\\", filename);
+        File file = new File("src/main/resources/Images/"+filename);
         response.setHeader("Content-Type", getServletContext().getMimeType(filename));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"" + file.getName() + "\"");

@@ -1,6 +1,8 @@
 package tk.marvelsas.engineeringProject.service;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import tk.marvelsas.engineeringProject.model.AppUser;
 import tk.marvelsas.engineeringProject.model.ConfirmationToken;
@@ -12,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ForgetPasswordService {
 
     private final AppUserRepository appUserRepository;
@@ -21,6 +23,9 @@ public class ForgetPasswordService {
     private final ForgetPasswordTokenRepository forgetPasswordTokenRepository;
 
     private final EmailSander emailSander;
+
+    @Value("${application.frontend.url}")
+    private String frontendUrl;
 
     public void saveForgetPasswordToken(ForgetPasswordToken forgetPasswordToken){
         forgetPasswordTokenRepository.save(forgetPasswordToken);
@@ -46,7 +51,7 @@ public class ForgetPasswordService {
 
         ForgetPasswordToken forgetPasswordToken = generateForgetPasswordToken(email);
 
-        String link="http://localhost:4200/changepassword?token="+forgetPasswordToken.getToken();
+        String link=frontendUrl+"/changepassword?token="+forgetPasswordToken.getToken();
 
         emailSander.send(email,buildEmail(forgetPasswordToken.getAppUser().getName(),link),"resetPassword");
 

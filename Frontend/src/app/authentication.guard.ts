@@ -24,17 +24,6 @@ export class AuthenticationGuard implements CanActivate {
         return true;
       }
 
-      /*if(state.url == "/login" || state.url =="/register"){
-        return true;
-      }
-
-      let access_token = sessionStorage.getItem('access_token');
-
-      if (!access_token){
-        return this.router.parseUrl('/login');
-      }
-
-      return true;*/
   }
 
 

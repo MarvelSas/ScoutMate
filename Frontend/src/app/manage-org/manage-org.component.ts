@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {Organization} from "../models/Organization";
 import {CustomResponse} from "../models/CustomResponse";
 import {AppUserOrganization} from "../models/AppUserOrganization";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-manage-org',
@@ -19,7 +20,7 @@ export class ManageOrgComponent implements OnInit {
   public currentOrganization : Organization = new Organization();
   public currentSubOrganization:Organization[]=[];
   public currentOrganizationUsers:AppUserOrganization[]=[];
-
+  public enviormentUrl = environment.backendUrl;
 
 
   constructor(public organizationService:OrganizationService,private router: Router) {
