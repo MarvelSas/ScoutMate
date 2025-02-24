@@ -64,7 +64,7 @@ ScoutMate is an application designed to support scout instructors in their daily
 
 <img src="./assets/screenshot3.png" width="500px">
 
-### Form to generate dynamic order
+### Form to generate dynamic orders
 
 <img src="./assets/screenshot4.png" width="500px">
 
