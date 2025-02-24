@@ -1,7 +1,5 @@
 # ScoutMate – Application to Make Scout Instruction Easier ⚜️
 
-<img src="./assets/screenshot.png" width="500px">
-
 ScoutMate is an application designed to support scout instructors in their daily work with scout teams. Our main goal is to relieve scout instructors from all paperwork related to scout teams, allowing them to focus on educating young scouts. To achieve this goal, we have prepared an interface that automates many processes that were previously documented manually on paper.
 
 ## 🔥 Features
@@ -58,16 +56,19 @@ ScoutMate is an application designed to support scout instructors in their daily
 
 ## 🖼 Screenshots
 
-### Home Page
+### Manage your organization
 
 <img src="./assets/screenshot.png" width="500px">
 
-### Product Page
-
-<img src="./assets/screenshot2.png" width="500px">
-
-### Shopping Cart
+### Manage your sub organization
 
 <img src="./assets/screenshot3.png" width="500px">
 
+### Form to generate dynamic order
+
+<img src="./assets/screenshot4.png" width="500px">
+
+### Generated PDF file for order
+
+<img src="./assets/screenshot2.png" width="500px">
 
