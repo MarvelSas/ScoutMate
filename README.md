@@ -1,5 +1,7 @@
 # ScoutMate – Application to Make Scout Instruction Easier ⚜️
 
+<img src="./assets/screenshot.png" width="500px">
+
 ScoutMate is an application designed to support scout instructors in their daily work with scout teams. Our main goal is to relieve scout instructors from all paperwork related to scout teams, allowing them to focus on educating young scouts. To achieve this goal, we have prepared an interface that automates many processes that were previously documented manually on paper.
 
 ## 🔥 Features
@@ -54,7 +56,18 @@ ScoutMate is an application designed to support scout instructors in their daily
 [![GitHub](https://img.shields.io/badge/GitHub-kkolcz-%23181717?style=flat&logo=github)](https://github.com/kkolcz/)
 [![GitHub](https://img.shields.io/badge/GitHub-Łokcio-%23181717?style=flat&logo=github)](https://github.com/lokcio/)
 
-## 🎞️ App functionality introduction video
+## 🖼 Screenshots
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ZTOUHSSof6I/0.jpg)](https://www.youtube.com/watch?v=ZTOUHSSof6I)
+### Home Page
+
+<img src="./assets/screenshot.png" width="500px">
+
+### Product Page
+
+<img src="./assets/screenshot2.png" width="500px">
+
+### Shopping Cart
+
+<img src="./assets/screenshot3.png" width="500px">
+
 
