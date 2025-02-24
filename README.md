@@ -1,15 +1,13 @@
-# ScoutMate – Application to make scout instruction live easier ⚜️
+# ScoutMate – Application to Make Scout Instruction Easier ⚜️
 
-ScoutMate is an application to support scout instructors in their daily work with scout teams. Our main goal was to release sout instructors from all paper work around scout team to aloows them to focuse on eduction young scouts.
-To achieve this goal we prepared interface which automate a lot of process which previously documented manually on paper.
+ScoutMate is an application designed to support scout instructors in their daily work with scout teams. Our main goal is to relieve scout instructors from all paperwork related to scout teams, allowing them to focus on educating young scouts. To achieve this goal, we have prepared an interface that automates many processes that were previously documented manually on paper.
 
 ## 🔥 Features
-
-✅ **Generating customized PDF documents for orders** - Allows scout instructors to use a simple, efficient interface instead of time-consuming paper work.  
-✅ **Scalable and easy-to-use organization management system** - Make a space for scout instructora where they can store all information about their: scout troops, scout banners, teams.  
-✅ **System to create and execute scout attempts** - This feature was added to replace classic paper version of scout attemenpts which very offten were lost. This feature allow users to access their atemtps from any place in any time.  
-✅ **Dockerized Deployment with Nginx** – Simplified and scalable deployment using containerized environments.  
-✅ **Secure Authentication & Authorization** – Users can register, log in, and manage their accounts securely.   
+- ✅ **Generating Customized PDF Documents for Orders:** Allows scout instructors to use a simple, efficient interface instead of time-consuming paperwork.
+- ✅ **Scalable and Easy-to-Use Organization Management System:** Provides a space for scout instructors where they can store all information about their scout troops, scout banners, and teams.
+- ✅ **System to Create and Execute Scout Attempts:** This feature replaces the classic paper version of scout attempts, which were often lost. It allows users to access their attempts from any place at any time.
+- ✅ **Dockerized Deployment with Nginx:** Simplifies and scales deployment using containerized environments.
+- ✅ **Secure Authentication & Authorization:** Users can register, log in, and manage their accounts securely.
 
 ## 🚀 Live Demo
 
