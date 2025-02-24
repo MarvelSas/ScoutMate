@@ -1,17 +1,15 @@
-# ScoutMate – Application to make scout instruction live easier
-
-<img src="./assets/screenshot.png" width="500px">
+# ScoutMate – Application to make scout instruction live easier ⚜️
 
 ScoutMate is an application to support scout instructors in their daily work with scout teams. Our main goal was to release sout instructors from all paper work around scout team to aloows them to focuse on eduction young scouts.
 To achieve this goal we prepared interface which automate a lot of process which previously documented manually on paper.
 
 ## 🔥 Features
 
-✅ **Generating customized PDF documents for orders** - Allows scout instructors to use a simple, efficient interface instead of time-consuming paper work.
-✅ **Scalable and easy-to-use organization management system** - Make a space for scout instructora where they can store all information about their: scout troops, scout banners, teams.
-✅ **System to create and execute scout attempts** - This feature was added to replace classic paper version of scout attemenpts which very offten were lost. This feature allow users to access their atemtps from any place in any time.
-✅ **Dockerized Deployment with Nginx** – Simplified and scalable deployment using containerized environments.
-✅ **Secure Authentication & Authorization** – Users can register, log in, and manage their accounts securely.  
+✅ **Generating customized PDF documents for orders** - Allows scout instructors to use a simple, efficient interface instead of time-consuming paper work.  
+✅ **Scalable and easy-to-use organization management system** - Make a space for scout instructora where they can store all information about their: scout troops, scout banners, teams.  
+✅ **System to create and execute scout attempts** - This feature was added to replace classic paper version of scout attemenpts which very offten were lost. This feature allow users to access their atemtps from any place in any time.  
+✅ **Dockerized Deployment with Nginx** – Simplified and scalable deployment using containerized environments.  
+✅ **Secure Authentication & Authorization** – Users can register, log in, and manage their accounts securely.   
 
 ## 🚀 Live Demo
 
@@ -24,7 +22,7 @@ To achieve this goal we prepared interface which automate a lot of process which
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-%23336791.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 
 ### Frontend
 
@@ -50,21 +48,15 @@ To achieve this goal we prepared interface which automate a lot of process which
 ### Backend Development
 
 [![GitHub](https://img.shields.io/badge/GitHub-MarvelSas-%23181717?style=flat&logo=github)](https://github.com/MarvelSas/)
+[![GitHub](https://img.shields.io/badge/GitHub-NaimaD99-%23181717?style=flat&logo=github)](https://github.com/NaimaD99/)
 
 ### Frontend Development
 
+[![GitHub](https://img.shields.io/badge/GitHub-Maaniumm-%23181717?style=flat&logo=github)](https://github.com/maaniumm/)
 [![GitHub](https://img.shields.io/badge/GitHub-kkolcz-%23181717?style=flat&logo=github)](https://github.com/kkolcz/)
+[![GitHub](https://img.shields.io/badge/GitHub-Łokcio-%23181717?style=flat&logo=github)](https://github.com/lokcio/)
 
-## 🖼 Screenshots
+## 🎞️ App functionality introduction video
 
-### Home Page
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ZTOUHSSof6I/0.jpg)](https://www.youtube.com/watch?v=ZTOUHSSof6I)
 
-<img src="./assets/screenshot.png" width="500px">
-
-### Product Page
-
-<img src="./assets/screenshot2.png" width="500px">
-
-### Shopping Cart
-
-<img src="./assets/screenshot3.png" width="500px">
